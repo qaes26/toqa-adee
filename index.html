@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مملكة تقى</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #050505; /* أسود عميق جداً */
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .font-amiri {
+            font-family: 'Amiri', serif;
+        }
+        
+        /* تدرجات ذهبية فخمة */
+        .text-gold {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+        }
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728);
+        }
+        .gold-border {
+            border: 1px solid #bf953f;
+            box-shadow: 0 0 15px rgba(191, 149, 63, 0.2);
+        }
+        .gold-border:hover {
+            box-shadow: 0 0 25px rgba(191, 149, 63, 0.5);
+        }
+
+        /* رسومات SVG (Line Art) */
+        .svg-art path {
+            stroke: #bf953f;
+            stroke-width: 1.5;
+            fill: none;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawLine 4s forwards ease-in-out;
+        }
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* تأثيرات النبض والبطاقات */
+        .pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .card-hover {
+            transition: all 0.5s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            border-color: #fcf6ba;
+        }
+
+        /* تأثير الآلة الكاتبة */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+            color: #bf953f;
+            margin-right: 2px;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* خلفية النجوم الهادئة */
+        .stars-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at center, transparent 0%, #050505 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><circle cx="20" cy="20" r="1" fill="%23bf953f" opacity="0.3"/><circle cx="150" cy="80" r="1.5" fill="%23fcf6ba" opacity="0.5"/><circle cx="300" cy="250" r="1" fill="%23bf953f" opacity="0.2"/><circle cx="80" cy="320" r="2" fill="%23fcf6ba" opacity="0.4"/></svg>');
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* شريط التمرير */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #bf953f;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased relative min-h-screen">
+
+    <div class="stars-bg"></div>
+
+    <!-- القسم الأول: الواجهة الملكية -->
+    <header class="min-h-screen flex flex-col items-center justify-center text-center p-6 relative">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/50 to-[#050505] z-0"></div>
+        
+        <div class="z-10 flex flex-col items-center w-full max-w-4xl">
+            <!-- فن الخطوط (وردة) -->
+            <svg class="svg-art w-24 h-24 sm:w-32 sm:h-32 mb-8" viewBox="0 0 100 100">
+                <path d="M50,90 Q45,60 50,30 Q30,40 40,20 Q50,10 60,20 Q70,40 50,30 Q55,60 50,90" />
+                <path d="M50,60 Q35,55 30,45 Q40,50 50,60" />
+                <path d="M50,65 Q65,60 70,50 Q60,55 50,65" />
+            </svg>
+
+            <h1 class="font-amiri text-5xl sm:text-7xl font-bold text-gold mb-6 tracking-wide leading-tight">
+                إلى تقى..
+            </h1>
+            <h2 class="text-xl sm:text-3xl text-gray-300 font-light mb-10 pulse-slow">
+                سيدة النبض، وأميرة الروح
+            </h2>
+            
+            <p class="font-amiri text-lg sm:text-2xl text-gray-400 max-w-2xl leading-relaxed">
+                "وما كنتُ ممن يدخلُ العشقُ قلبَهُ.. ولكنّ مَن يُبصِر جفونكِ يَعشَقُ"
+            </p>
+        </div>
+        
+        <!-- سهم التمرير -->
+        <div class="absolute bottom-10 z-10 animate-bounce cursor-pointer opacity-70 hover:opacity-100 transition" onclick="document.getElementById('poetry').scrollIntoView({behavior: 'smooth'})">
+            <svg class="w-8 h-8 text-[#bf953f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </header>
+
+    <!-- القسم الثاني: ديوان العشق (الشعر والغزل) -->
+    <section id="poetry" class="py-20 px-6 sm:px-12 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="font-amiri text-3xl sm:text-5xl text-gold mb-12">قصائد لم تُكتب إلا لكِ</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-right">
+                <!-- لوحة الشعر الأولى -->
+                <div class="bg-[#111] p-8 rounded-2xl gold-border card-hover relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-gold-gradient opacity-10 rounded-bl-full transition-all group-hover:scale-150"></div>
+                    <h4 class="font-amiri text-2xl text-gold mb-4">في حضوركِ</h4>
+                    <p class="text-gray-300 leading-loose text-lg font-amiri">
+                        يا تقى، حين تبتسمين،<br>
+                        ينحني الليل احتراماً لضياء وجهكِ،<br>
+                        وتصمت النجوم لِتُنصت إلى لحنِ ضحكتكِ.<br>
+                        أنتِ لستِ مجرد امرأة،<br>
+                        أنتِ قصيدة عجز الشعراء عن إكمال قوافيها.
+                    </p>
+                </div>
+
+                <!-- لوحة الشعر الثانية -->
+                <div class="bg-[#111] p-8 rounded-2xl gold-border card-hover relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-gold-gradient opacity-10 rounded-bl-full transition-all group-hover:scale-150"></div>
+                    <h4 class="font-amiri text-2xl text-gold mb-4">في غيابكِ</h4>
+                    <p class="text-gray-300 leading-loose text-lg font-amiri">
+                        يصيرُ الوقتُ عبئاً، والأماكنُ خاوية.<br>
+                        أبحثُ عن طيفكِ بين الوجوه،<br>
+                        لأدرك أن لا وجهَ يُشبهكِ،<br>
+                        وأن قلبي لا ينبضُ إلا باتجاهكِ يا تقى.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- القسم الثالث: رسائل الذهب (البطاقات) -->
+    <section class="py-20 px-6 bg-gradient-to-b from-transparent to-[#1a1515] relative z-10">
+        <div class="max-w-5xl mx-auto text-center">
+            <h3 class="font-amiri text-3xl sm:text-5xl text-gold mb-16">اعترافات صامتة</h3>
+            
+            <div class="flex flex-wrap justify-center gap-6">
+                <!-- بطاقة 1 -->
+                <div class="w-full sm:w-64 h-48 bg-[#0a0a0a] rounded-xl gold-border flex items-center justify-center p-6 text-center card-hover cursor-pointer group">
+                    <p class="font-amiri text-xl text-gray-400 group-hover:text-white transition-colors duration-300">
+                        "النظر إليكِ يا تقى، هو طمأنينتي الوحيدة في هذا العالم."
+                    </p>
+                </div>
+                <!-- بطاقة 2 -->
+                <div class="w-full sm:w-64 h-48 bg-[#0a0a0a] rounded-xl gold-border flex items-center justify-center p-6 text-center card-hover cursor-pointer group">
+                    <p class="font-amiri text-xl text-gray-400 group-hover:text-white transition-colors duration-300">
+                        "لا أريد من الدنيا شيئاً، سوى أن تبقى يدكِ بيدي."
+                    </p>
+                </div>
+                <!-- بطاقة 3 -->
+                <div class="w-full sm:w-64 h-48 bg-[#0a0a0a] rounded-xl gold-border flex items-center justify-center p-6 text-center card-hover cursor-pointer group">
+                    <p class="font-amiri text-xl text-gray-400 group-hover:text-white transition-colors duration-300">
+                        "أحبكِ بعقلٍ طار في هواكِ، وبقلبٍ لم يعرف نبضاً سواكِ."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- القسم الرابع: العهد الأخير (الزر والنافذة) -->
+    <section class="py-32 px-6 text-center relative z-10 flex flex-col items-center">
+        <svg class="svg-art w-16 h-16 mb-8 opacity-70" viewBox="0 0 100 100">
+            <path d="M50,80 C30,60 10,40 30,20 C40,10 50,20 50,30 C50,20 60,10 70,20 C90,40 70,60 50,80 Z" />
+        </svg>
+
+        <button onclick="openPopup()" class="bg-transparent gold-border text-gold font-amiri text-2xl sm:text-3xl py-4 px-12 rounded-full hover:bg-[#bf953f] hover:text-black transition-all duration-500 shadow-lg hover:shadow-[#bf953f]/50 w-full max-w-xs sm:max-w-md">
+            العهد الأخير
+        </button>
+    </section>
+
+    <!-- التوقيع (إعداد قيس جازي) -->
+    <footer class="py-8 text-center relative z-10 border-t border-[#bf953f]/20 bg-[#050505]">
+        <p class="font-amiri text-lg text-gray-500 tracking-wider">
+            صُنعت بحب <span class="text-[#bf953f]">♥</span> من إعداد قيس جازي
+        </p>
+    </footer>
+
+    <!-- النافذة المنبثقة (Modal) بنظام الآلة الكاتبة وتوافق الهاتف -->
+    <div id="loveModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-700 p-4 sm:p-6">
+        
+        <!-- حاوية النافذة -->
+        <div class="popup-container bg-[#0a0a0a] gold-border rounded-2xl w-full max-w-2xl p-6 sm:p-12 relative transform scale-95 transition-transform duration-700 shadow-2xl flex flex-col max-h-[90vh]">
+            
+            <!-- زر الإغلاق (X) -->
+            <button onclick="closePopup()" class="absolute top-4 right-4 text-gray-500 hover:text-gold transition-colors p-2 z-10">
+                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <!-- المحتوى الذي سيتم كتابته -->
+            <div class="text-center flex-grow flex flex-col justify-center overflow-y-auto mt-8 sm:mt-4">
+                <h2 class="font-amiri text-3xl sm:text-5xl text-gold mb-6 sm:mb-8">إلى مالكة الروح..</h2>
+                
+                <!-- مكان ظهور النص بالآلة الكاتبة -->
+                <p id="typewriterText" class="text-gray-200 font-amiri text-lg sm:text-2xl leading-loose sm:leading-relaxed text-right min-h-[150px] sm:min-h-[200px]">
+                    <!-- النص سيظهر هنا -->
+                </p>
+            </div>
+
+            <!-- الزر السفلي (يظهر بعد انتهاء الكتابة) -->
+            <div id="closeBtnContainer" class="mt-8 text-center opacity-0 transition-opacity duration-1000">
+                <button onclick="closePopup()" class="w-full sm:w-auto bg-gradient-to-r from-[#bf953f] to-[#aa771c] text-black font-bold font-amiri text-xl sm:text-2xl py-3 px-10 rounded-full hover:shadow-lg hover:shadow-[#bf953f]/50 transition-all">
+                    أحبكِ
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('loveModal');
+        const popupContainer = document.querySelector('.popup-container');
+        const textContainer = document.getElementById('typewriterText');
+        const closeBtnContainer = document.getElementById('closeBtnContainer');
+        
+        // النص المراد كتابته (يمكنك تعديله كما تشاء)
+        const secretMessage = "يا تقى... لم تكوني يوماً مجرد صدفة عابرة، بل أنتِ السكينة التي طالما بحثت عنها في فوضى هذه الحياة. في عينيكِ أرى مستقبلي المشرق، وفي صوتكِ أسمع أجمل ألحان الوجود. أعاهدكِ أن أبقى السند، والكتف الذي لا يميل، والمحب الذي لا يتغير.. اليوم، وغداً، وإلى الأبد.";
+        
+        let typeInterval; // لحفظ المؤقت وإيقافه عند الإغلاق المبكر
+
+        function openPopup() {
+            // إظهار النافذة
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            popupContainer.classList.remove('scale-95');
+            popupContainer.classList.add('scale-100');
+            
+            // تهيئة الآلة الكاتبة
+            textContainer.innerHTML = '';
+            textContainer.classList.add('typing-cursor');
+            closeBtnContainer.classList.remove('opacity-100');
+            closeBtnContainer.classList.add('opacity-0');
+            
+            // بدء الكتابة بعد تأخير بسيط ليكتمل ظهور النافذة
+            setTimeout(() => {
+                typeWriterEffect(secretMessage, 0);
+            }, 600);
+        }
+
+        function closePopup() {
+            // إخفاء النافذة
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            popupContainer.classList.remove('scale-100');
+            popupContainer.classList.add('scale-95');
+            
+            // إيقاف الكتابة إذا تم إغلاق النافذة قبل انتهائها
+            clearTimeout(typeInterval);
+        }
+
+        // دالة الآلة الكاتبة الذكية (تتوقف قليلاً عند الفواصل والنقاط)
+        function typeWriterEffect(text, index) {
+            if (index < text.length) {
+                const char = text.charAt(index);
+                
+                // تحويل المسافات لـ HTML space لضمان عدم حدوث أخطاء في التنسيق
+                if (char === '\n') {
+                    textContainer.innerHTML += '<br>';
+                } else {
+                    textContainer.innerHTML += char;
+                }
+
+                // تحديد سرعة الكتابة (تأخير أطول عند الفواصل والنقاط لإعطاء نفس طبيعي)
+                let speed = 50; // السرعة العادية
+                if (char === '،' || char === ',') speed = 400; // وقفة قصيرة
+                if (char === '.' || char === '؟') speed = 700; // وقفة طويلة
+
+                typeInterval = setTimeout(() => {
+                    typeWriterEffect(text, index + 1);
+                }, speed);
+            } else {
+                // عند الانتهاء من الكتابة
+                textContainer.classList.remove('typing-cursor'); // إزالة المؤشر
+                closeBtnContainer.classList.remove('opacity-0'); // إظهار زر الإغلاق
+                closeBtnContainer.classList.add('opacity-100');
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+```
+
+  
